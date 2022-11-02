@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lameco_grocery/src/auth/components/custom_text_field.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -19,23 +20,17 @@ class SignInScreen extends StatelessWidget {
           decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.vertical(top: Radius.circular(45))),
-          child: Column(children: [
-            // Email
-            TextFormField(
-              decoration: InputDecoration(
-                  isDense: true,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(18))),
+          child: Column(children: const [
+            CustomTextField(
+              icon: Icons.email,
+              label: "Email",
+              isObscure: false,
             ),
-
-            TextFormField(
-               decoration: InputDecoration(
-                  isDense: true,
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(18))),
+            CustomTextField(
+              icon: Icons.lock,
+              label: "Password",
+              isObscure: true,
             ),
-
-            // Senha
           ]),
         ))
       ]),
