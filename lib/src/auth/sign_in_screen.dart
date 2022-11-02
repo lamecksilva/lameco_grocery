@@ -20,16 +20,15 @@ class SignInScreen extends StatelessWidget {
           decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.vertical(top: Radius.circular(45))),
-          child: Column(children: const [
+          child: Column(children: [
             CustomTextField(
               icon: Icons.email,
               label: "Email",
-              isObscure: false,
             ),
             CustomTextField(
               icon: Icons.lock,
               label: "Password",
-              isObscure: true,
+              isSecret: true,
             ),
           ]),
         ))
