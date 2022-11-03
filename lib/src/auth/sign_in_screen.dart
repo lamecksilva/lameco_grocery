@@ -20,16 +20,37 @@ class SignInScreen extends StatelessWidget {
           decoration: const BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.vertical(top: Radius.circular(45))),
-          child: Column(children: [
-            CustomTextField(
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
+            const CustomTextField(
               icon: Icons.email,
               label: "Email",
             ),
-            CustomTextField(
+            const CustomTextField(
               icon: Icons.lock,
               label: "Password",
               isSecret: true,
             ),
+            SizedBox(
+                height: 50,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18))),
+                  child: const Text('Entrar', style: TextStyle(fontSize: 18)),
+                  onPressed: () {
+                    print("Entrar");
+                  },
+                )),
+            Align(
+              alignment: Alignment.centerRight,
+              child: TextButton(
+                  onPressed: () {
+                    print("Esqueceu a senha");
+                  },
+                  child: const Text("Esqueceu a senha?",
+                      style: TextStyle(color: Colors.red))),
+            )
           ]),
         ))
       ]),
