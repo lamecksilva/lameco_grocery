@@ -14,8 +14,7 @@ class SignInScreen extends StatelessWidget {
             color: Colors.red,
           ),
         ),
-        Expanded(
-            child: Container(
+        Container(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
           decoration: const BoxDecoration(
               color: Colors.white,
@@ -31,6 +30,8 @@ class SignInScreen extends StatelessWidget {
               label: "Password",
               isSecret: true,
             ),
+
+            // Botão entrar
             SizedBox(
                 height: 50,
                 child: ElevatedButton(
@@ -42,6 +43,8 @@ class SignInScreen extends StatelessWidget {
                     print("Entrar");
                   },
                 )),
+
+            // Esqueceu a senha
             Align(
               alignment: Alignment.centerRight,
               child: TextButton(
@@ -50,9 +53,50 @@ class SignInScreen extends StatelessWidget {
                   },
                   child: const Text("Esqueceu a senha?",
                       style: TextStyle(color: Colors.red))),
+            ),
+
+            // Divider
+            Container(
+              padding: const EdgeInsets.only(bottom: 10),
+              child: Row(
+                children: [
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey.withAlpha(90),
+                      thickness: 2,
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Text("Ou"),
+                  ),
+                  Expanded(
+                    child: Divider(
+                      color: Colors.grey.withAlpha(90),
+                      thickness: 2,
+                    ),
+                  )
+                ],
+              ),
+            ),
+
+            SizedBox(
+              height: 50,
+              child: OutlinedButton(
+                  style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(18)),
+                      side: const BorderSide(width: 2, color: Colors.green)),
+                  onPressed: () {
+                    print("Criar Conta");
+                  },
+                  child: const Text(
+                    "Criar Conta",
+                    style: TextStyle(fontSize: 18),
+                  )),
             )
           ]),
-        ))
+        )
       ]),
     );
   }
