@@ -1,3 +1,4 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lameco_grocery/src/auth/components/custom_text_field.dart';
 
@@ -10,10 +11,38 @@ class SignInScreen extends StatelessWidget {
       backgroundColor: Colors.green,
       body: Column(children: [
         Expanded(
-          child: Container(
-            color: Colors.red,
-          ),
+          child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+            // Nome do App
+            const Text.rich(TextSpan(style: TextStyle(fontSize: 40), children: [
+              TextSpan(
+                  text: 'Green',
+                  style: TextStyle(
+                      color: Colors.white, fontWeight: FontWeight.bold)),
+              TextSpan(text: 'Grocer', style: TextStyle(color: Colors.red))
+            ])),
+
+            // Categorias
+            SizedBox(
+              height: 30,
+              child: DefaultTextStyle(
+                style: const TextStyle(fontSize: 25),
+                child: AnimatedTextKit(
+                    repeatForever: true,
+                    pause: Duration.zero,
+                    animatedTexts: [
+                      FadeAnimatedText('Frutas'),
+                      FadeAnimatedText('Legumes'),
+                      FadeAnimatedText('Verduras'),
+                      FadeAnimatedText('Carnes'),
+                      FadeAnimatedText('Cereais'),
+                      FadeAnimatedText('Laticíneos'),
+                    ]),
+              ),
+            ),
+          ]),
         ),
+
+        // Formulário
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 40),
           decoration: const BoxDecoration(
