@@ -1,6 +1,7 @@
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lameco_grocery/src/auth/components/custom_text_field.dart';
+import 'package:lameco_grocery/src/auth/sign_up_screen.dart';
 import 'package:lameco_grocery/src/config/custom_colors.dart';
 
 class SignInScreen extends StatelessWidget {
@@ -139,6 +140,10 @@ class SignInScreen extends StatelessWidget {
                                   width: 2, color: Colors.green)),
                           onPressed: () {
                             print("Criar Conta");
+                            Navigator.of(context)
+                                .push(MaterialPageRoute(builder: (c) {
+                              return const SignUpScreen();
+                            }));
                           },
                           child: const Text(
                             "Criar Conta",
