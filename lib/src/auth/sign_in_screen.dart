@@ -142,7 +142,7 @@ class SignInScreen extends StatelessWidget {
                             print("Criar Conta");
                             Navigator.of(context)
                                 .push(MaterialPageRoute(builder: (c) {
-                              return const SignUpScreen();
+                              return SignUpScreen();
                             }));
                           },
                           child: const Text(
