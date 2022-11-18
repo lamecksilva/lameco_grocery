@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:lameco_grocery/src/home/home_tab.dart';
+import 'package:lameco_grocery/src/pages/home/home_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({super.key});
