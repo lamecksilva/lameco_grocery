@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lameco_grocery/src/config/custom_colors.dart';
 import 'package:lameco_grocery/src/models/item_model.dart';
+import 'package:lameco_grocery/src/pages/product/product_screen.dart';
 import 'package:lameco_grocery/src/services/utils_services.dart';
 
 class ItemTile extends StatelessWidget {
@@ -14,55 +15,71 @@ class ItemTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Card(
-          elevation: 1,
-          shadowColor: Colors.grey.shade300,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(20),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // Imagem
-                Expanded(
-                  child: Image.asset(item.imgUrl),
-                ),
+        // Conteudo
+        GestureDetector(
+          onTap: () {
+            print('Item click');
 
-                // Nome
-                Text(
-                  item.itemName,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (c) {
+                return ProductScreen(
+                  item: item,
+                );
+              }),
+            );
+          },
+          child: Card(
+            elevation: 1,
+            shadowColor: Colors.grey.shade300,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  // Imagem
+                  Expanded(
+                    child: Image.asset(item.imgUrl),
                   ),
-                ),
 
-                // Preço - Unidade de Medida
-                Row(
-                  children: [
-                    Text(
-                      utilsServices.priceToCurrency(item.price),
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: CustomColors.customSwatchColor),
+                  // Nome
+                  Text(
+                    item.itemName,
+                    style: const TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Text(
-                      '/${item.unit}',
-                      style: TextStyle(
-                        color: Colors.grey.shade500,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 12,
+                  ),
+
+                  // Preço - Unidade de Medida
+                  Row(
+                    children: [
+                      Text(
+                        utilsServices.priceToCurrency(item.price),
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
+                            color: CustomColors.customSwatchColor),
                       ),
-                    )
-                  ],
-                ),
-              ],
+                      Text(
+                        '/${item.unit}',
+                        style: TextStyle(
+                          color: Colors.grey.shade500,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12,
+                        ),
+                      )
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),
+
+        // Add to cart
         Positioned(
           top: 4,
           right: 4,
